@@ -1,0 +1,221 @@
+
+Lecture thumbnail
+7:43 / 7:46
+Transcript
+Welcome back, students.
+
+Now that we've seen how objects are implemented specifically in Python, we're going to take a step
+
+back and talk more theoretically about some of the principles of object oriented programming.
+
+And I think this will make more sense now that you've seen some actual code examples and generally when
+
+people talk about object oriented programming, they talk about four basic principles.
+
+The first one is inheritance.
+
+And we've talked about that a little bit.
+
+This just means that an object can be based on another object and have the same properties and methods
+
+of another object.
+
+And that object is then called its parent object, and it's considered a child object of that parent.
+
+And so you'll see those terms used quite a bit.
+
+And usually this results in something referred to as an object hierarchy.
+
+Now, in our code example, we didn't have a parent object for point, but we might have we might just
+
+have a geometry object that has some properties and methods that are common to all objects, maybe spatial
+
+reference system that's common to all objects or something like that.
+
+And then point line and polygon objects are all types of geometries that all children of the geometry
+
+object.
+
+And so they have the same properties and methods of the geometry, but they can add or extend their
+
+own properties and methods.
+
+And then we created a point 3D object that was a child of the object, and we extended it by including
+
+a Z coordinate for elevation and units property to indicate what units that elevation was in and some
+
+things like that.
+
+You could also have a point.
+
+An object descends from point that has a m coordinate for a measured value if you're going to use a
+
+lot of linear interpolations and things like that.
+
+But these object hierarchies are very important and oftentimes if you look through the documentation
+
+of different modules.
+
+You'll see some object hierarchies like this, and I'll try and describe the different objects that
+
+are in that module to help you better understand how they're related to one another.
+
+Now, another principle of object oriented programming is polymorphism.
+
+And this means that methods with the same name may be implemented differently for different types of
+
+objects.
+
+And we saw this in our example where we had a distance to method for a point that just calculated the
+
+two dimensional distance.
+
+And then we created a 3D object.
+
+We also had a distance to method, but in this case it calculated a distance in three dimensional space.
+
+And so the different methods with the same name, but they're implemented differently depending on the
+
+type of object.
+
+Now, another principle is abstraction, and this just refers to the fact that you don't need to understand
+
+how a method is implemented necessarily to use the object, you can just call the distance to method
+
+on point object and pass it another point object and you'll get the distance.
+
+You need to know how that's calculated.
+
+You do generally if when you're creating an object, but to use it, you don't need to know.
+
+You don't need to care.
+
+You just need to understand what the result of that method means.
+
+And because of polymorphism, you could call that same method on a 3D object and pass it point through
+
+the object.
+
+And you also get a distance back and you don't have to know or even care necessarily that you're getting
+
+a three dimensional distance instead of a two dimensional distance.
+
+You just know you're getting a distance.
+
+It's a straight line distance between two points and how that works, you don't care.
+
+Now, that method could also be quite a bit more complicated if we're working with geographical coordinates
+
+of that long in that distance could be measured over the sphere rather than a straight line distance.
+
+Again, you don't have to know.
+
+You don't have to care.
+
+You just know you call the distance to method and you get the distance between two points.
+
+And the fourth principle of object oriented programming is called encapsulation, and this refers to
+
+the fact that with good programming practice, object properties are only accessible to get her and
+
+set her methods.
+
+So an object is completely self-contained.
+
+If someone wants to use that object, they can't access its properties directly.
+
+They can only access them through the public getter and setter method that you've made available.
+
+So an object is really a self-contained unit and this gives you a lot of control over how an object
+
+can be used.
+
+Now, a couple other things that I'm going to include in this lecture, just kind of odds and ends that
+
+I wanted to mention that don't really have a better place for them, and that is that in most object
+
+oriented programming languages, you can have something called abstract classes.
+
+And an abstract class is a class that's not intended to be instantiated.
+
+So you're not going to actually create an instance of an abstract class.
+
+So.
+
+So by way of example, if you go back and look at our hierarchy, chances are we're not going to create
+
+an instance of a geometry object.
+
+The geometry object is only there to hold.
+
+The properties and methods are going to be coming to the point line and polygon objects.
+
+So we don't have to define those common properties and methods three different times for these three
+
+different object types.
+
+Do it all in geometry and then white line and polygon, extend the geometry class or the descendants
+
+of the geometry class.
+
+And that's really useful in terms of understanding how these things are related.
+
+But we're not actually going to create a geometry object.
+
+And so the geometry object would be considered an abstract class.
+
+It's not a class.
+
+It's intended to be instantiated.
+
+And then I want to talk about is a built in function in Python called is instant's and the is instanced
+
+function takes two parameters.
+
+One is a reference to an instance of an object and the other is the name of a class.
+
+And is instant returns true if the object that you pass, it is an instance of the class and so this
+
+will help us in our code.
+
+Maybe you want to see if a point is just a point object or if it's a 3D object, because we might want
+
+to handle things differently depending.
+
+And so it's a really useful function.
+
+Now, something need to be careful about, however, is that objects are instances of their parent classes
+
+that object and not on the instances of their class.
+
+But there are instances of their parent classes as well.
+
+So in our example point, 3D object is an instance of both the point 3D class and the point class.
+
+But if we create a point object, it's only an instance of point, it's not an instance of point 3D,
+
+and this is something that's important to be aware of.
+
+If you need to test what type of object to classes, for instance, oftentimes Polygon will be descended
+
+from a line.
+
+And because of that, if you want to test whether an object is a line or a polygon, you wouldn't be
+
+able to just use that as instance to test whether it's an instance of a line, because that would be
+
+true for both lines and polygons.
+
+You would have to test whether it's an instance of polygon and that would only be true of Polygon.
+
+It wouldn't be true of a line.
+
+So just be aware of that.
+
+So thanks for listening.
+
+This brings us to the end of this little section on objects in Python.
+
+In the next lecture, we're going to start a new section on packages and what exactly that means.
+
+And we'll see you then.
